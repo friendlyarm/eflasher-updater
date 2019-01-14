@@ -10,9 +10,11 @@ if [ -f ${BINFILE} ]; then
     sleep 2
     cp bin/eflasher-gui ${BINFILE}
     chmod 755 ${BINFILE}
+    apt-get -y update
+    apt-get -y install libblkid-dev exfat-fuse exfat-utils parted
     echo "Finished."
     while true; do
-        read -p "Reboot now?" yn
+        read -p "Reboot now? (y/n): " yn
         case $yn in
             [Yy]* ) reboot; break;;
             [Nn]* ) exit;;
