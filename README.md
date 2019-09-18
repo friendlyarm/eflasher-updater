@@ -12,5 +12,6 @@ cd eflasher-updater/
 ```
 手动更新
 ------------
-复制 bin/eflasher-gui 覆盖开发板上的 /opt/ 下的同名文件
+复制 bin/eflasher-gui 文件到SD卡root分区的/opt目录下，  
+如果开发板已经通过SD卡启动到eflasher系统，则是覆盖开发板上的 /opt/ 下的同名文件。
 
