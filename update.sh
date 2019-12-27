@@ -1,6 +1,5 @@
 #!/bin/bash
 
-BINFILE=/opt/eflasher-gui
 if [ -f ${BINFILE} ]; then
     PID=`ps --no-headers -C eflasher-gui -o pid`
     if [ ! -z $PID ]; then
@@ -8,8 +7,15 @@ if [ -f ${BINFILE} ]; then
         kill $PID
     fi
     sleep 2
-    cp bin/eflasher-gui ${BINFILE}
-    chmod 755 ${BINFILE}
+
+    cp files/opt/eflasher-gui /opt/eflasher-gui
+    chmod 755 /opt/eflasher-gui
+
+    cp files/usr/local/bin/eflasher /usr/local/bin/eflasher
+    chmod 755 /usr/local/bin/eflasher
+
+    cp files/etc/fstab /etc/fstab
+
     apt-get -y update
     apt-get -y install libblkid-dev exfat-fuse exfat-utils parted
     echo "Finished."

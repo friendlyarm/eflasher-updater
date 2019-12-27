@@ -1,0 +1,1 @@
+/dev/mmcblk0p1	/mnt/sdcard exfat-fuse  auto,rw,iocharset=utf8	0	0

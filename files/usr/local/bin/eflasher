@@ -1,0 +1,25 @@
+#!/bin/bash
+
+EFLASHER_PID=`ps --no-headers -C eflasher-gui -o pid | paste -sd " " -`
+
+killpids() {
+    if [ $# -gt 0 ]; then
+        kill $@
+    fi
+}
+
+start_gui_or_console() {
+    if [ $# -gt 0 ]; then
+	. /usr/bin/setqt4env
+	/usr/local/bin/eflasher-console-bin
+    else
+        /opt/eflasher-gui -qws --help
+    fi
+}
+
+if [ $# -gt 0 ]; then
+        killpids ${EFLASHER_PID}
+	/opt/eflasher-gui -qws $@
+else
+	start_gui_or_console ${EFLASHER_PID}
+fi
